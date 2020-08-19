@@ -1,0 +1,78 @@
+body {
+    background-image: url(../img/rupixen-com-oVnCYVs_6Tk-unsplash.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    margin-top: 100px;
+    background-color: rgba(17, 17, 17, 0.849);
+}
+
+.container-buttons{
+    padding-top: 20px;
+}
+
+input[type="file"] {
+    color: white;
+    padding-left: 30px;
+}
+
+#loader{
+    display: none;
+}
+
+.btn-compress {
+    background-color: #54ca6d;
+    padding: 10px;
+    font-weight: 900;
+    border-radius: 17px;
+    border: 1px white solid;
+}
+
+.btn-compress:hover{
+    background-color: #02ff39;
+    transition: ease 1s;
+}
+
+.custom-file-input {
+    color: transparent;
+    opacity: 1;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Selecciona una canción';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    margin-right: 30px;
+}
+
+.custom-file-input:hover::before {
+    border-color: black;
+}
+
+.custom-file-input:active {
+    outline: 0;
+}
+
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}

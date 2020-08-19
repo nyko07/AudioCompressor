@@ -1,0 +1,15 @@
+{
+    "name": "nyko/compressor-project",
+    "description": "mp3 compressor made with PHP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Nicolas Herrera",
+            "email": "nyko07her@gmail.com"
+        }
+    ],
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^0.16.0",
+        "kartik-v/bootstrap-fileinput": "dev-master"
+    }
+}

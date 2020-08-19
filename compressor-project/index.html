@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Compresor de audio</title>
+    <link  rel="icon"   href="../img/1.png" type="icono/png" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+</head>
+
+<body>
+    <div class="container">
+        <form method="post" action="" enctype="multipart/form-data" id="myform" enctype="multipart/form-data">
+            <div class="row container-buttons">
+                <div class="form-group col-md-8">
+                    <input type="file" name="file" id="cancion" class="filestyle" data-input="false"
+                        data-classIcon="icon-plus" />
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="submit" value="Comprimir Canción" class="btn-compress">
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12 text-center" id="loader"><img src="https://i.gifer.com/XOsX.gif" alt="" width="250"
+                    height="250" ;>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        $(":file").filestyle({ text: "Seleccionar una canción", btnClass: "btn-primary" });
+        $("form#myform").submit(function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var elem = document.createElement("div");
+
+            $.ajax({
+                url: 'server.php',
+                type: 'POST',
+                data: formData,
+                beforeSend: function () {
+                    $('#loader').show();
+                    $('.btn-compress').prop('disabled', true);
+                },
+                success: function (data) {
+                    if (data.success == true) {
+                        elem.innerHTML = "<strong>" + data.originalSong + "<strong> ! <hr><strong>" + data.compressedSong + "<strong>";
+                        swal({
+                            title: 'Compresion Terminada!',
+                            content: elem,
+                            button: 'Cerrar'
+                        });
+                        $('.btn-compress').prop('disabled', false);
+                        $("#cancion").val(null);
+                        $('#loader').hide();
+                    } else {
+                        swal("Ooops..!",
+                            "La canción " + data.error + " ya existe!",
+                            "error");
+                        $('.btn-compress').prop('disabled', false);
+                        $("#cancion").val(null);
+                        $('#loader').hide();
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    </script>
+</body>
+
+</html>
