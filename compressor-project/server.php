@@ -42,7 +42,7 @@ $format->on('progress', function ($audio, $format, $percentage) {
 
 $format
     ->setAudioChannels(2)
-    ->setAudioKiloBitrate(32);
+    ->setAudioKiloBitrate(64);
    
 $audio->save($format, 'C:\xampp\htdocs\compressor-project/compressedSongs/'.$song);
 
